@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BE_SOCIALNETWORK", "BE_SOCIALNETWORK.csproj", "{5FBF9BB6-F694-4EC3-B7E7-DA826B583163}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09CAA16D-465E-4B90-91B1-A81374463165}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FBF9BB6-F694-4EC3-B7E7-DA826B583163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBF9BB6-F694-4EC3-B7E7-DA826B583163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBF9BB6-F694-4EC3-B7E7-DA826B583163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBF9BB6-F694-4EC3-B7E7-DA826B583163}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EFB6334-9D79-4538-8242-F27E8DBAFA16}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\0abiesce.j3f.png",
+      "PackagePath": "staticwebassets\\Image\\0abiesce.j3f.png"
+    },
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\10cx2g4n.p4u.mp4",
+      "PackagePath": "staticwebassets\\Image\\10cx2g4n.p4u.mp4"
+    },
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\fetvzcw1.uaj.mp4",
+      "PackagePath": "staticwebassets\\Image\\fetvzcw1.uaj.mp4"
+    },
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\gvtvp3lc.j2g.mp4",
+      "PackagePath": "staticwebassets\\Image\\gvtvp3lc.j2g.mp4"
+    },
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\ksnu2cdw.ud3.png",
+      "PackagePath": "staticwebassets\\Image\\ksnu2cdw.ud3.png"
+    },
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\puzpu03h.5bt.sql",
+      "PackagePath": "staticwebassets\\Image\\puzpu03h.5bt.sql"
+    },
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\uerwlaml.ury.png",
+      "PackagePath": "staticwebassets\\Image\\uerwlaml.ury.png"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.BE_SOCIALNETWORK.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.BE_SOCIALNETWORK.props",
+      "PackagePath": "build\\BE_SOCIALNETWORK.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.BE_SOCIALNETWORK.props",
+      "PackagePath": "buildMultiTargeting\\BE_SOCIALNETWORK.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.BE_SOCIALNETWORK.props",
+      "PackagePath": "buildTransitive\\BE_SOCIALNETWORK.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
