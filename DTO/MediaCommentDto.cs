@@ -9,8 +9,7 @@ namespace BE_SOCIALNETWORK.DTO
 {
     public class MediaCommentDto : BaseModel
     {
-        public int CommentId { get; set; }
-        public virtual CommentDto Comment { get; set; }
+        public string Src { get; set; }
         public string Type { get; set; }
     }
 }

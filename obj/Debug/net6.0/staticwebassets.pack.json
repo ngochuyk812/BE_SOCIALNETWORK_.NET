@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\Image\\10cx2g4n.p4u.mp4"
     },
     {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\angry.png",
+      "PackagePath": "staticwebassets\\Image\\angry.png"
+    },
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\care.png",
+      "PackagePath": "staticwebassets\\Image\\care.png"
+    },
+    {
       "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\fetvzcw1.uaj.mp4",
       "PackagePath": "staticwebassets\\Image\\fetvzcw1.uaj.mp4"
     },
@@ -17,16 +25,36 @@
       "PackagePath": "staticwebassets\\Image\\gvtvp3lc.j2g.mp4"
     },
     {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\haha.png",
+      "PackagePath": "staticwebassets\\Image\\haha.png"
+    },
+    {
       "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\ksnu2cdw.ud3.png",
       "PackagePath": "staticwebassets\\Image\\ksnu2cdw.ud3.png"
+    },
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\like.png",
+      "PackagePath": "staticwebassets\\Image\\like.png"
+    },
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\love.png",
+      "PackagePath": "staticwebassets\\Image\\love.png"
     },
     {
       "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\puzpu03h.5bt.sql",
       "PackagePath": "staticwebassets\\Image\\puzpu03h.5bt.sql"
     },
     {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\sad.png",
+      "PackagePath": "staticwebassets\\Image\\sad.png"
+    },
+    {
       "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\uerwlaml.ury.png",
       "PackagePath": "staticwebassets\\Image\\uerwlaml.ury.png"
+    },
+    {
+      "Id": "D:\\CV\\.NET\\BE_SOCIALNETWORK\\wwwroot\\Image\\wow.png",
+      "PackagePath": "staticwebassets\\Image\\wow.png"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.BE_SOCIALNETWORK.Microsoft.AspNetCore.StaticWebAssets.props",

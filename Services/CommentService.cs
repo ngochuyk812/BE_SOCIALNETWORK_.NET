@@ -26,7 +26,7 @@ namespace BE_SOCIALNETWORK.Services.Interface
         }
         public async Task<PaginatedItems<CommentDto>> ListAsyncPageByIdPost(int pageIndex, int idPost)
         {
-            var page = await unitOfWork.CommentRepository.PageAsync(pageIndex, pageSettings.CommentSize, f => f.PostId == idPost, null, i => i.Include(f=>f.User));
+            var page = await unitOfWork.CommentRepository.PageAsync(pageIndex, pageSettings.Size, f => f.PostId == idPost, null, i => i.Include(f=>f.User).Include(f=>f.Medias).Include(f=>f.CommentParent));
             return mapper.Map<PaginatedItems<CommentDto>>(page);
         }
         public async Task<CommentDto> CreateComment(CreateCommentRequest comment, List<MediaDto> medias, int userId)

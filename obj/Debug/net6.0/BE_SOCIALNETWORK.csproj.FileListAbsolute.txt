@@ -95,3 +95,11 @@ D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication
 D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\BE_SOCIALNETWORK.staticwebassets.runtime.json
 D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\AWSSDK.Core.dll
 D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\AWSSDK.S3.dll
+D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\EntityFramework.SqlServer.dll
+D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\EntityFramework.dll
+D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\System.Data.SqlClient.dll
+D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\CV\.NET\BE_SOCIALNETWORK\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

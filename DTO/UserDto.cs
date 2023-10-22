@@ -10,7 +10,7 @@ namespace BE_SOCIALNETWORK.DTO
     public class UserDto : BaseModel
     {
         public string Username { get; set; }
-        public string? RefeshToken { get; set; }
+        public string RefeshToken { get; set; }
         public string FullName{ get; set; }
         public DateTime BirthDay { get; set; }
         public string Email { get; set; }
@@ -19,7 +19,6 @@ namespace BE_SOCIALNETWORK.DTO
         public string? Banner { get; set; }
         public string? Story { get; set; }
         public int Status { get; set; }
-
         public virtual ICollection<PostDto> Posts { get; set; }
         public virtual ICollection<CommentDto> Comments { get; set; }
 

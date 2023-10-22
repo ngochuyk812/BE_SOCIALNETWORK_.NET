@@ -53,7 +53,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comment", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.Friend", b =>
@@ -82,7 +82,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasIndex("UserRequestId");
 
-                    b.ToTable("Friend");
+                    b.ToTable("Friend", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.Like", b =>
@@ -113,7 +113,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Like");
+                    b.ToTable("Like", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.LikeType", b =>
@@ -127,12 +127,15 @@ namespace BE_SOCIALNETWORK.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("LikeType");
+                    b.ToTable("LikeType", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.MediaComment", b =>
@@ -159,7 +162,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasIndex("CommentId");
 
-                    b.ToTable("MediaComment");
+                    b.ToTable("MediaComment", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.MediaMessage", b =>
@@ -183,7 +186,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasIndex("MessageId");
 
-                    b.ToTable("MediaMessage");
+                    b.ToTable("MediaMessage", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.MediaPost", b =>
@@ -210,7 +213,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("MediaPost");
+                    b.ToTable("MediaPost", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.Message", b =>
@@ -239,7 +242,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Message");
+                    b.ToTable("Message", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.Participant", b =>
@@ -265,7 +268,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Participant");
+                    b.ToTable("Participant", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.Post", b =>
@@ -298,7 +301,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Post");
+                    b.ToTable("Post", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.Room", b =>
@@ -320,7 +323,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Room");
+                    b.ToTable("Room", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.User", b =>
@@ -369,7 +372,7 @@ namespace BE_SOCIALNETWORK.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("BE_SOCIALNETWORK.Database.Model.Comment", b =>

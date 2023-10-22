@@ -20,5 +20,7 @@ namespace BE_SOCIALNETWORK.Extensions
             TotalPage = (int)Math.Ceiling(count / (double)pageSize);
         }
 
+
+
     }
 }

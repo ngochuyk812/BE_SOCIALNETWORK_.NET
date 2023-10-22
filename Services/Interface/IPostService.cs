@@ -9,10 +9,9 @@ namespace BE_SOCIALNETWORK.Services.Interface
 {
     public interface IPostService
     {
-        Task<Post> UploadPost(CreatePostRequest body, List<MediaDto> pathMedia);
-        Task<PaginatedItems<PostDto>> ListAsyncPage(int pageIndex);
+        Task<PostDto> UploadPost(CreatePostRequest body, List<MediaDto> pathMedia);
+        Task<PaginatedItems<CustomPostHomeDto>> ListAsyncPage(int pageIndex);
         Task<PostDto> FindById(int id);
-
 
     }
 }

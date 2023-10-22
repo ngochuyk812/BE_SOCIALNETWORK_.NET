@@ -1,18 +1,8 @@
-using BE_SOCIALNETWORK.Database;
-using BE_SOCIALNETWORK.Database.Model;
 using BE_SOCIALNETWORK.DTO;
-using BE_SOCIALNETWORK.Mapping;
+using BE_SOCIALNETWORK.Helper;
 using BE_SOCIALNETWORK.Payload.Request;
-using BE_SOCIALNETWORK.Repositories.Contracts;
-using BE_SOCIALNETWORK.Repositories.IRespositories;
-using BE_SOCIALNETWORK.Services;
 using BE_SOCIALNETWORK.Services.Interface;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace BE_SOCIALNETWORK.Controllers;
 
@@ -38,7 +28,11 @@ public class PostController : ControllerBase
     [Authorize]
     public async Task<IActionResult> Create([FromForm] CreatePostRequest body)
     {
-        var path = await uploadFieS3Service.UploadFilesToS3(body.Files, "post");
+        var path = new List<MediaDto>();
+        if (body.Files != null)
+        {
+            path = await uploadFieS3Service.UploadFilesToS3(body.Files, "post");
+        }
         var rs = await postService.UploadPost(body, path);
         if (rs!=null)
         {

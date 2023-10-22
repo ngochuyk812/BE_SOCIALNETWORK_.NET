@@ -10,7 +10,8 @@ namespace BE_SOCIALNETWORK.Database.Model
     public class Comment : BaseModel
     {
         [ForeignKey("CommentParent")]
-        public int? ParentId { get; set; }  
+        public int? ParentId { get; set; }
+        [ForeignKey("User")]  
         public int UserId { get; set; }
         public int PostId { get; set; }
         public string Content { get; set; }

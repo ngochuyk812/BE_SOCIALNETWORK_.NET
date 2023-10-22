@@ -16,11 +16,13 @@ namespace BE_SOCIALNETWORK.Services.Interface
         private readonly IUnitOfWork unitOfWork;
         private readonly PageSettings pageSettings;
         private readonly IMapper mapper;
-        public LikeService(IUnitOfWork unitOfWork, IOptions<PageSettings> pageSettings, IMapper mapper)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public LikeService(IUnitOfWork unitOfWork, IOptions<PageSettings> pageSettings, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this.mapper = mapper;
             this.pageSettings = pageSettings.Value;
             this.unitOfWork = unitOfWork;
+            _httpContextAccessor = httpContextAccessor;
         }
        public async Task<PaginatedItems<LikeDto>> ListAsyncPageByIdPost(int pageIndex, int idPost)
         {
@@ -67,10 +69,11 @@ namespace BE_SOCIALNETWORK.Services.Interface
             return true;
         }
 
-        public async Task<List<LikeType>> GetLikeTypes()
+        public async Task<List<LikeTypeDto>> GetLikeTypes()
         {
+            string host = _httpContextAccessor.HttpContext.Request.Host.Value;
             var rs = await unitOfWork.LikeTypeRepository.ListAsync(f=>true, null, null);
-            return rs.ToList() ;  
+            return mapper.Map<List<LikeTypeDto>>(rs.ToList()) ;  
         }
     }
 }

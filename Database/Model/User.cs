@@ -23,7 +23,7 @@ namespace BE_SOCIALNETWORK.Database.Model
         public int Status { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
+
 
     }
 }

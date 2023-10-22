@@ -10,15 +10,14 @@ namespace BE_SOCIALNETWORK.DTO
 {
     public class CommentDto : BaseModel
     {
-        public int? ParentId { get; set; }  
-        public int UserId { get; set; }
         public int PostId { get; set; }
+        public int? ParentId { get; set; }
+        public int UserId { get; set; }
         public string Content { get; set; }
-        public DateTime CreateAt { get; set; }
         public virtual CommentDto CommentParent { get; set; }
-        public virtual PostDto Post { get; set; }
         public virtual UserDto User { get; set; }
-        public virtual ICollection<MediaComment> Medias { get; set; }
+        public virtual ICollection<MediaCommentDto> Medias { get; set; }
+        public DateTime CreateAt { get; set; }
 
     }
 }

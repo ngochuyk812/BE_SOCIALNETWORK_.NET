@@ -20,5 +20,7 @@ namespace BE_SOCIALNETWORK.Database.Model
         public virtual ICollection<MediaPost> MediaPosts { get; set; }
         public virtual IEnumerable<Comment> Comments { get; set; }
         public virtual IEnumerable<Like> Likes { get; set; }
+
+
     }
 }

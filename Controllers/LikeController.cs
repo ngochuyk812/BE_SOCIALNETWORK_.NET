@@ -1,11 +1,10 @@
-using BE_SOCIALNETWORK.Database;
-using BE_SOCIALNETWORK.Database.Model;
-using BE_SOCIALNETWORK.Repositories.Contracts;
-using BE_SOCIALNETWORK.Repositories.IRespositories;
+using BE_SOCIALNETWORK.DTO;
+using BE_SOCIALNETWORK.Helper;
+using BE_SOCIALNETWORK.Payload.Request;
 using BE_SOCIALNETWORK.Services.Interface;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using parking_center.Extensions;
 
 namespace BE_SOCIALNETWORK.Controllers;
 
@@ -29,17 +28,15 @@ public class LikeController : ControllerBase
         return Ok(rs);
     }
 
+
     [Authorize]
     [HttpPost]
     [Route("create")]
-    public async Task<IActionResult> Like([FromForm] int idPost,[FromForm] int type)
+    [Consumes("application/json")]
+    public async Task<IActionResult> Like(CreateLikeRequest createBody)
     {
-        var userId = HttpContext.User.FindFirst("Id").Value;
-        if (userId == null)
-        {
-            return BadRequest();
-        }
-        var rs = await likeService.CreateLike(type, idPost, int.Parse(userId));
+        UserDto user = HttpContext.GetUser();
+        var rs = await likeService.CreateLike(createBody.Type, createBody.IdPost, user.Id);
         if (rs)
         {
             return Ok(rs);
@@ -52,14 +49,11 @@ public class LikeController : ControllerBase
     [Authorize]
     [HttpPost]
     [Route("remove")]
+    [Consumes("application/json")]
     public async Task<IActionResult> UnLike([FromForm] int idPost)
     {
-        var userId = HttpContext.User.FindFirst("Id").Value;
-        if (userId == null)
-        {
-            return BadRequest();
-        }
-        var rs = await likeService.UnLike(idPost, int.Parse(userId));
+        UserDto user = HttpContext.GetUser();
+        var rs = await likeService.UnLike(idPost, user.Id);
         if (rs)
         {
             return Ok(rs);

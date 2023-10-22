@@ -5,6 +5,7 @@ namespace BE_SOCIALNETWORK.Database.Model
 {
     public class LikeType : BaseModel
     {
-        public string Name { get; set; }
+         public string Name { get; set; }
+        public string Icon { get; set; }
     }
 }

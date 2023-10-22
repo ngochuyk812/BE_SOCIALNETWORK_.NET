@@ -1,8 +1,8 @@
-using BE_SOCIALNETWORK.DTO;
-using BE_SOCIALNETWORK.Payload.Request;
 using BE_SOCIALNETWORK.Services.Interface;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using BE_SOCIALNETWORK.Helper;
+using BE_SOCIALNETWORK.DTO;
+using parking_center.Extensions;
 
 namespace BE_SOCIALNETWORK.Controllers;
 
@@ -29,34 +29,18 @@ public class FriendController : ControllerBase
     [Route("create_request")]
     public async Task<IActionResult> CreateRequestFriend([FromForm] int idUser)
     {
-        var userId = HttpContext.User.FindFirst("Id").Value;
-        if (userId == null)
-        {
-            return BadRequest();
-        }
-        var dataMedia = new List<MediaDto>();
-        if (commentRequest?.Files?.Count > 0)
-        {
-             dataMedia = await s3Service.UploadFilesToS3(commentRequest.Files, "comment");
-        }
-
-        var comment = await commentService.CreateComment(commentRequest, dataMedia, int.Parse(userId));
-        if(comment == null) return BadRequest();
-        return Ok(comment);
+        UserDto user = HttpContext.GetUser();
+        var rs = await friendService.CreateRequestFriend(user.Id, idUser);
+        if (rs == null) return BadRequest();
+        return Ok(rs);
     }
 
     [Authorize]
     [HttpPost]
-    [Route("remove")]
-    [Consumes("application/x-www-form-urlencoded")]
-    public async Task<IActionResult> RemoveComment([FromForm] int idComment)
+    [Route("accept")]
+    public async Task<IActionResult> AcceptFriend([FromForm] int idFriend)
     {
-        var userId = HttpContext.User.FindFirst("Id").Value;
-        if (userId == null)
-        {
-            return BadRequest();
-        }
-        var rs = await commentService.RemoveComment(idComment);
+        var rs = await friendService.AcceptFriend(idFriend);
         if (rs)
         {
             return Ok(rs);
@@ -64,4 +48,16 @@ public class FriendController : ControllerBase
         return BadRequest();
     }
 
+    [Authorize]
+    [HttpPost]
+    [Route("reject")]
+    public async Task<IActionResult> RejectFriend([FromForm] int idFriend)
+    {
+        var rs = await friendService.RejectFriend(idFriend);
+        if (rs)
+        {
+            return Ok(rs);
+        }
+        return BadRequest();
+    }
 }

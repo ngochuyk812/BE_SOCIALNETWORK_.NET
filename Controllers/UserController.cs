@@ -20,6 +20,4 @@ public class UserController : ControllerBase
         this.unitOfWork = unitOfWork;
     }
 
-
-
 }

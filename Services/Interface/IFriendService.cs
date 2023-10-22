@@ -9,6 +9,9 @@ namespace BE_SOCIALNETWORK.Services.Interface
     public interface IFriendService 
     {
         Task<PaginatedItems<FriendDto>> ListAsyncPageByIdUser(int pageIndex, int idUser);
+        Task<FriendDto> CreateRequestFriend(int idUserRequest, int idUserAccept);
+        Task<bool> AcceptFriend(int idFriend);
+        Task<bool> RejectFriend(int idFriend);
 
     }
 }

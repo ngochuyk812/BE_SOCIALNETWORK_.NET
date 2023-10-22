@@ -10,10 +10,7 @@ namespace BE_SOCIALNETWORK.DTO
 {
     public class MediaPostDto : BaseModel
     {
-        public int PostId { get; set; }
-        public virtual PostDto Post { get; set; }
         public string Src { get; set; }
         public string Type { get; set; }
-
     }
 }

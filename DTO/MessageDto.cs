@@ -13,3 +13,4 @@ namespace BE_SOCIALNETWORK.DTO
         public virtual ICollection<MediaMessageDto> MediaMessages { get; set; }
     }
 }
+    

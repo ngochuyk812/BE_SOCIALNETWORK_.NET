@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
 using BE_SOCIALNETWORK.Database.Model;
+using BE_SOCIALNETWORK.DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace BE_SOCIALNETWORK.Database
@@ -23,7 +25,19 @@ namespace BE_SOCIALNETWORK.Database
         public DbSet<MediaMessage> MediaMessage { get; set; }
         public DbSet<Like> Like { get; set; }
         public DbSet<Participant> Participant { get; set; }
+        //CustomPostHome
+        public DbSet<CustomPostHome> CustomPostHome { get; set; }
 
-       
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<CustomPostHome>()
+                .HasMany(e => e.MediaPosts)
+                .WithOne()
+                .HasForeignKey(e => e.PostId);
+
+        }
     }
+
 }

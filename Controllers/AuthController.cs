@@ -20,7 +20,8 @@ public class AuthController : ControllerBase
 
     [HttpPost]
     [Route("sign_up")]
-    public async Task<IActionResult> SignUp([FromBody] SignUpRequest body) 
+    [Consumes("application/json")]
+    public async Task<IActionResult> SignUp([FromForm] SignUpRequest body) 
     { 
         if(string.IsNullOrEmpty(body.Username) || string.IsNullOrEmpty(body.Password) 
             || string.IsNullOrEmpty(body.FullName) || string.IsNullOrEmpty(body.Email))
@@ -38,24 +39,24 @@ public class AuthController : ControllerBase
 
     [HttpPost]
     [Route("sign_in")]
-    public async Task<IActionResult> SignIn([FromBody] SignInRequest body)
+    [Consumes("application/json")]
+    public async Task<IActionResult> SignIn( SignInRequest body)
     {
         if (string.IsNullOrEmpty(body.Username) || string.IsNullOrEmpty(body.Password) )
         {
-            return BadRequest(new { status = "error", data = "Please enter complete information" });
+            return BadRequest(new {  data = "Please enter complete information" });
         }
-        return await userService.SignIn(body.Username, body.Password, (e) =>
+        var checkEmail = await userService.FindByUsername(body.Username);
+        if(!checkEmail)
         {
-            if (e.status == "error")
-            {
-                return BadRequest(new { status = e.status, data = e.data });
-            }
-            else
-            {
-                return Ok(new { status = "success", data = e.data });
-            }
-        });
-
+            return BadRequest(new {  message = "Username does not exist" });
+        }
+        var rs = await userService.SignIn(body.Username, body.Password);
+        if (rs == null)
+        {
+            return BadRequest(new {message = "Incorrect password" });
+        }
+        return Ok(rs);
     }
 
 

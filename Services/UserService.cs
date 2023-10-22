@@ -1,7 +1,9 @@
 ﻿
+using AutoMapper;
 using BE_SOCIALNETWORK.Config;
 using BE_SOCIALNETWORK.Database.Model;
 using BE_SOCIALNETWORK.Mapping;
+using BE_SOCIALNETWORK.Payload.Response;
 using BE_SOCIALNETWORK.Repositories.IRespositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -18,8 +20,10 @@ namespace BE_SOCIALNETWORK.Services.Interface
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly JWTSettings jWTSettings;
-        public UserService(IUnitOfWork unitOfWork, IOptions<JWTSettings> jwtSettings)
+        private readonly IMapper mapper;
+        public UserService(IUnitOfWork unitOfWork, IOptions<JWTSettings> jwtSettings, IMapper mapper)
         {
+            this.mapper = mapper;
             this.unitOfWork = unitOfWork;
             this.jWTSettings = jwtSettings.Value;
         }
@@ -29,21 +33,28 @@ namespace BE_SOCIALNETWORK.Services.Interface
             var user = await unitOfWork.UserRepository.Find(t=>t.Username == username || t.Email == email, null);
             return user != null;
         }
-
-        public async Task<IActionResult> SignIn(string username, string password, Func<dynamic, IActionResult> callback)
+        public async Task<bool> FindByUsername(string username)
         {
-           var user = await unitOfWork.UserRepository.Find(t => t.Username == username , null);
+            var user = await unitOfWork.UserRepository.Find(t => t.Username == username , null);
+            return user != null;
+        }
+
+        public async Task<SignInResponse> SignIn(string username, string password)
+        {
+            var user = await unitOfWork.UserRepository.Find(t => t.Username == username , null);
             if(user == null)
             {
-                return callback(new { status = "error", data = "Username does not exist" });
+                return null;
             }
             bool verity = SecretHasher.Verify(password, user.Password);
             if (!verity)
             {
-                return callback(new { status = "error", data = "Incorrect password" });
+                return null;
             }
             string token = GenerateJWT(user);
-            return callback(new { status = "success", data = new { token= token } });
+            var rs = mapper.Map<SignInResponse>(user);
+            rs.AccessToken = token;
+            return rs;
         }
         private string GenerateJWT(User userInfo)
         {

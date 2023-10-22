@@ -11,7 +11,7 @@ namespace BE_SOCIALNETWORK.Services.Interface
         Task<PaginatedItems<LikeDto>> ListAsyncPageByIdPost(int pageIndex, int idPost);
         Task<bool> CreateLike(int typeLike, int idPost, int idUser);
         Task<bool> UnLike(int idPost, int idUser);
-        Task<List<LikeType>> GetLikeTypes();
+        Task<List<LikeTypeDto>> GetLikeTypes();
 
     }
 }

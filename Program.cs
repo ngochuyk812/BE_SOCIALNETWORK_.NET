@@ -1,11 +1,13 @@
 using BE_SOCIALNETWORK.Config;
 using BE_SOCIALNETWORK.Database;
+using BE_SOCIALNETWORK.Helper;
 using BE_SOCIALNETWORK.Mapping;
 using BE_SOCIALNETWORK.Repositories.Contracts;
 using BE_SOCIALNETWORK.Repositories.IRespositories;
 using BE_SOCIALNETWORK.Services;
 using BE_SOCIALNETWORK.Services.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -17,8 +19,10 @@ var _configuration = builder.Configuration;
 services.Configure<JWTSettings>(_configuration.GetSection("JWT"));
 services.Configure<PageSettings>(_configuration.GetSection("Pagination"));
 services.Configure<AWSSetings>(_configuration.GetSection("AWS"));
+services.Configure<AppSettings>(_configuration.GetSection("AppSettings"));
 
-services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+
+/*services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -29,7 +33,7 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
         ValidAudience = _configuration["JWT:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]))
     };
-});
+});*/
 services.AddDbContext<Social_NetworkContext>(options =>
 {
     options.UseSqlServer(_configuration.GetConnectionString("MyConnect"));
@@ -70,11 +74,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<JwtMiddleware>();
 app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseAuthentication();
-app.UseAuthorization();
-
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.MapControllers();
-
 app.Run();

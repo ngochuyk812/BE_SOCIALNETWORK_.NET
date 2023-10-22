@@ -1,8 +1,9 @@
 using BE_SOCIALNETWORK.DTO;
+using BE_SOCIALNETWORK.Helper;
 using BE_SOCIALNETWORK.Payload.Request;
 using BE_SOCIALNETWORK.Services.Interface;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using parking_center.Extensions;
 
 namespace BE_SOCIALNETWORK.Controllers;
 
@@ -32,18 +33,14 @@ public class CommentController : ControllerBase
     [Route("create")]
     public async Task<IActionResult> Comment([FromForm] CreateCommentRequest commentRequest)
     {
-        var userId = HttpContext.User.FindFirst("Id").Value;
-        if (userId == null)
-        {
-            return BadRequest();
-        }
+        UserDto user = HttpContext.GetUser();
         var dataMedia = new List<MediaDto>();
         if (commentRequest?.Files?.Count > 0)
         {
              dataMedia = await s3Service.UploadFilesToS3(commentRequest.Files, "comment");
         }
 
-        var comment = await commentService.CreateComment(commentRequest, dataMedia, int.Parse(userId));
+        var comment = await commentService.CreateComment(commentRequest, dataMedia, user.Id);
         if(comment == null) return BadRequest();
         return Ok(comment);
     }
@@ -66,5 +63,7 @@ public class CommentController : ControllerBase
         }
         return BadRequest();
     }
+
+   
 
 }

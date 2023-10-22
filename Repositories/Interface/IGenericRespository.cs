@@ -19,6 +19,7 @@ namespace BE_SOCIALNETWORK.Repositories.IRespositories
         Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy, Func<IQueryable<T>, IIncludableQueryable<T, object>> includeProperties);
         Task<T> AddAsync(T entity, bool ensureTransaction = false);
         Task<PaginatedItems<T>> PageAsync(int pageIndex, int pageSize, Expression<Func<T, bool>> filter, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy, Func<IQueryable<T>, IIncludableQueryable<T, object>> includeProperties);
-
+        Task<PaginatedItems<TQuery>> PageWithQueryAsync<TQuery>(int pageIndex, int pageSize, IQueryable<TQuery> query , Expression<Func<TQuery, bool>> filter, Func<IQueryable<TQuery>, IOrderedQueryable<TQuery>> orderBy, Func<IQueryable<TQuery>, IIncludableQueryable<TQuery, object>> includeProperties) where TQuery : BaseModel;
+        IQueryable<TQuery> QueryFromSql<TQuery>(string sql, params object[] parameters) where TQuery : class;
     }
 }
