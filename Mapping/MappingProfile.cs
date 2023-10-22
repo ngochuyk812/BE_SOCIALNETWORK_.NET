@@ -27,6 +27,7 @@ namespace BE_SOCIALNETWORK.Mapping
             CreateMap<LikeType, LikeTypeDto>().ForMember(des => des.Icon,
                 opt => opt.MapFrom<UrlBase, string>(src=>src.Icon)).ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<User, InfoUserDto>().ReverseMap();
             CreateMap<User, SignInResponse>().ReverseMap();
             CreateMap<PaginatedItems<Post>, PaginatedItems<PostDto>>().ReverseMap();
             CreateMap<PaginatedItems<Comment>, PaginatedItems<CommentDto>>().ReverseMap();

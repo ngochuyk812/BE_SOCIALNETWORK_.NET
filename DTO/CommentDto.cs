@@ -15,7 +15,7 @@ namespace BE_SOCIALNETWORK.DTO
         public int UserId { get; set; }
         public string Content { get; set; }
         public virtual CommentDto CommentParent { get; set; }
-        public virtual UserDto User { get; set; }
+        public virtual InfoUserDto User { get; set; }
         public virtual ICollection<MediaCommentDto> Medias { get; set; }
         public DateTime CreateAt { get; set; }
 

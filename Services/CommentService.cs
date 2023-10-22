@@ -31,14 +31,19 @@ namespace BE_SOCIALNETWORK.Services.Interface
         }
         public async Task<CommentDto> CreateComment(CreateCommentRequest comment, List<MediaDto> medias, int userId)
         {
+            var userInfo = await unitOfWork.UserRepository.Find(f => f.Id == userId);
+            if(userInfo == null)
+            {
+                return null;
+            }
+
             Comment commentEntity = new Comment
             {
                 PostId = comment.IdPost,
                 UserId = userId,
                 ParentId = comment.IdParent == -1 ? null : comment.IdParent,
                 Content = comment.Content,
-                CreatedDate = DateTime.Now,
-
+                CreatedDate = DateTime.Now
             };
 
             List<MediaComment> mediasEntity = new List<MediaComment>();
@@ -55,7 +60,10 @@ namespace BE_SOCIALNETWORK.Services.Interface
             var entity = await unitOfWork.CommentRepository.AddAsync(commentEntity);
             await unitOfWork.CommitAsync();
             if(entity != null)
-            return mapper.Map<CommentDto>(entity);
+            {
+                entity.User = userInfo;
+                return mapper.Map<CommentDto>(entity);
+            }
             return null;
         }
         public async Task<bool> RemoveComment(int idComment)
